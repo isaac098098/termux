@@ -1,0 +1,6 @@
+#!/bin/bash
+cp -r ~/.config/nvim ~/termux/dotfiles/.config
+cp ~/.p10k.zsh ~/termux/dotfiles/
+cp ~/.zshrc ~/termux/dotfiles/
+cp ~/.termux/termux.properties ~/termux/environment
+cp ~/repos/termux-style/fonts/Iosevka.ttf ~/termux/fonts
