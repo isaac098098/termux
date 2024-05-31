@@ -449,9 +449,5 @@ set tabline=%!Tabline()
 " Copy all document to clipboard
 nmap <C-d> ggVG"+y
 
-" Wayland clipboard, requires wl-clipboard
-
-nnoremap "+y :call system("wl-copy", @") <CR>
-
 " Color plugin
 :let g:colorizer_auto_color = 1
