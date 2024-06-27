@@ -45,22 +45,23 @@ syntax on
 set termguicolors
 
 "set zen bg
-autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#1e1e2e
+"autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#1e1e2e
+autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#2E3440
 
-"colorscheme nord
+colorscheme nord
 
 "set background=dark
 
 "catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
-colorscheme catppuccin-mocha 
+"colorscheme catppuccin-mocha 
 
 "background color
-:hi normal guibg=#1e1e2e
+":hi normal guibg=#1e1e2e
 
 ":highlight CocFloating guibg=#434C5E
-:highlight CocFloating guibg=#181825
-:highlight CocMenuSel guibg=#363a4f
-:highlight CocSearch guifg=#89b4fa
+":highlight CocFloating guibg=#181825
+":highlight CocMenuSel guibg=#363a4f
+":highlight CocSearch guifg=#89b4fa
 
 " nvim-tree
 
@@ -521,12 +522,15 @@ require("zen-mode").setup {
   },
   -- callback where you can add custom code when the Zen window opens
   on_open = function(win)
-        vim.cmd("highlight MsgArea guifg=#1e1e2e")
-        vim.cmd("highlight ModeMsg guifg=#1e1e2e")
+        --vim.cmd("highlight MsgArea guifg=#1e1e2e")
+        --vim.cmd("highlight ModeMsg guifg=#1e1e2e")
+        vim.cmd("highlight MsgArea guifg=#2E3440")
+        vim.cmd("highlight ModeMsg guifg=#2E3440")
   end,
   -- callback where you can add custom code when the Zen window closes
   on_close = function()
-        vim.cmd("highlight MsgArea guifg=#cdd6f4")
+        --vim.cmd("highlight MsgArea guifg=#cdd6f4")
+        vim.cmd("highlight MsgArea guifg=#ECEFF4")
   end,
 }
 EOF
