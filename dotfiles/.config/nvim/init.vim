@@ -522,6 +522,7 @@ require("zen-mode").setup {
   -- callback where you can add custom code when the Zen window opens
   on_open = function(win)
         vim.cmd("highlight MsgArea guifg=#1e1e2e")
+        vim.cmd("highlight ModeMsg guifg=#1e1e2e")
   end,
   -- callback where you can add custom code when the Zen window closes
   on_close = function()
@@ -534,5 +535,3 @@ EOF
 let g:loaded_matchparen = 0
 let g:vimtex_motion_matchparen = 0
 let g:vimtex_matchparen_enabled = 0
-
-highlight iCursor guifg=#000000 guibg=steelblue
