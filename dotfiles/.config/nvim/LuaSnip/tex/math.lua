@@ -165,6 +165,12 @@ s(
 	{f( function(_, snip) return snip.captures[1] end ), t("\\langle "), i(1), t(" \\rangle")},
 	{condition = in_mathzone}
 ),
+ 
+s(
+	{trig = "([^%a])Tm", dscr = "Tensor product", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\otimes ")},
+	{condition = in_mathzone}
+),
 
 --- Binary
  
@@ -227,6 +233,12 @@ s(
 s(
 	{trig = "´", dscr = "Complete subscript", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ),t("_{"), i(1), t("}")},
+	{condition = in_mathzone}
+),
+
+s(
+	{trig = "lf", dscr = "Left superscript", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\leftindex^"), i(1), t("{"), i(2), t("} ")},
 	{condition = in_mathzone}
 ),
 
@@ -305,7 +317,7 @@ s(
 
 s(
 	{trig = "([^%a])dx", dscr = "Inline ifferential", snippetType="autosnippet", regTrig = true, wordTrig = false},
-	{f( function(_, snip) return snip.captures[1] end ),t("\\Dif"), i(1)},
+	{f( function(_, snip) return snip.captures[1] end ),t("\\Dif "), i(1)},
 	{condition = in_mathzone}
 ),
 
@@ -450,7 +462,7 @@ s(
 s(
 	{trig = "([^%a])fc", dscr = "Function defined by cases", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{
-		t({"","\\begin{equation*}","    "}), 
+		t({""," \\begin{equation*}","    "}), 
 		i(1), t({" = \\begin{cases}","        "}),
         i(2), t(" & \\textnormal{"), i(3), t("} "), i(4), t({" \\\\ \\hfil","        "}),
         i(5), t(" & \\textnormal{"), i(6), t("} "), i(7), t({"","    "}),
@@ -820,6 +832,12 @@ s(
 -- Symbols
  
 s(
+	{trig = "([^%a])wd", dscr = "Triangle without base", snippetType="autosnippet", regTrig = true, wordTrig = false},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\bigwedge ")},
+	{condition = in_mathzone}
+),
+ 
+s(
 	{trig = "([^%a])cir", dscr = "Circle", snippetType="autosnippet", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ), t("\\circ")},
 	{condition = in_mathzone}
@@ -827,7 +845,7 @@ s(
 
 s(
 	{trig = "([^%a])Pm", dscr = "Plus minus symbol", snippetType="autosnippet", regTrig = true, wordTrig = false},
-	{f( function(_, snip) return snip.captures[1] end ), t("\\infty")},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\pm ")},
     {condition = in_mathzone}
 ),
 
@@ -851,7 +869,7 @@ s(
 
 s(
 	{trig = "([^%a])vac", dscr = "Empty set", snippetType="autosnippet", regTrig = true, wordTrig = false},
-	{f( function(_, snip) return snip.captures[1] end ), t("\\vc")},
+	{f( function(_, snip) return snip.captures[1] end ), t("\\vcc")},
     {condition = in_mathzone}
 ),
 
@@ -956,13 +974,13 @@ s(
 -- Vectors
  
 s(
-	{trig = "([^%a])vec", dscr = "Arrow vector", regTrig = true, wordTrig = false},
+	{trig = "([^%a])vec", dscr = "Arrow vector", snippetType = "autosnippet", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ), t("\\vv{"), i(1), t("}")},
     {condition = in_mathzone}
 ),
  
 s(
-	{trig = "([^%a])hat", dscr = "Unitary vector", regTrig = true, wordTrig = false},
+	{trig = "([^%a])hat", dscr = "Unitary vector", snippetType = "autosnippet", regTrig = true, wordTrig = false},
 	{f( function(_, snip) return snip.captures[1] end ), t("\\hat{"), i(1), t("}")},
     {condition = in_mathzone}
 ),

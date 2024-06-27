@@ -2,7 +2,7 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'lervag/vimtex'
 
@@ -44,6 +44,9 @@ syntax on
 
 set termguicolors
 
+"set zen bg
+autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#1e1e2e
+
 "colorscheme nord
 
 "set background=dark
@@ -51,6 +54,7 @@ set termguicolors
 "catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 colorscheme catppuccin-mocha 
 
+"background color
 :hi normal guibg=#1e1e2e
 
 ":highlight CocFloating guibg=#434C5E
@@ -202,19 +206,19 @@ EOF
 
 " coc-vim
 
-inoremap <silent><expr> <C-d>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<C-d>" :
-      \ coc#refresh()
-inoremap <expr><C-e> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+"inoremap <silent><expr> <C-d>
+      "\ coc#pum#visible() ? coc#pum#next(1) :
+      "\ CheckBackspace() ? "\<C-d>" :
+      "\ coc#refresh()
+"inoremap <expr><C-e> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+"
+"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              "\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"
+"function! CheckBackspace() abort
+  "let col = col('.') - 1
+  "return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
 
 " ulti-snippets
 
@@ -266,13 +270,8 @@ set lbr
 set nu
 set numberwidth=1
 
-" Power symbol
-
-" Tkransparent bg
-
-" hi normal guibg=NONE
-
 " vimtex
+
 " Requieres tree-sitter-cli
 
 " Wayland"
@@ -299,6 +298,9 @@ let g:vimtex_compiler_method = 'latexmk'
 let g:vimtex_view_forward_search_on_start = 'false'
 let g:vimtex_quickfix_mode = 0
 let g:vimtex_view_automatic = 0
+
+"zen mode
+let g:vimtex_compiler_silent = 1
 
 let g:vimtex_compiler_latexmk_engines = {
         \ '_'                : '-pdf',
@@ -448,11 +450,6 @@ endfunction
 
 set tabline=%!Tabline()
 
-" Clipboard"
-
-" Copy all document to clipboard
-nmap <C-d> ggVG"+y
-
 "Colorizer
 
 lua require'colorizer'.setup()
@@ -471,8 +468,8 @@ require("zen-mode").setup {
     -- * an absolute number of cells when > 1
     -- * a percentage of the width / height of the editor when <= 1
     -- * a function that returns the width or the height
-    width = 0.7, -- width of the Zen window
-    height = 0.85, -- height of the Zen window
+    width = 0.8, -- width of the Zen window
+    height = 0.9, -- height of the Zen window
     -- by default, no options are changed for the Zen window
     -- uncomment any of the options below, or add other vim.wo options you want to apply
     options = {
@@ -494,7 +491,7 @@ require("zen-mode").setup {
       showcmd = false, -- disables the command in the last line of the screen
       -- you may turn on/off statusline in zen mode by setting 'laststatus' 
       -- statusline will be shown only if 'laststatus' == 3
-      laststatus = 0, -- turn off the statusline in zen mode
+      laststatus = 1, -- turn off the statusline in zen mode
     },
     twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
     gitsigns = { enabled = false }, -- disables git signs
@@ -524,17 +521,18 @@ require("zen-mode").setup {
   },
   -- callback where you can add custom code when the Zen window opens
   on_open = function(win)
+        vim.cmd("highlight MsgArea guifg=#1e1e2e")
   end,
   -- callback where you can add custom code when the Zen window closes
   on_close = function()
+        vim.cmd("highlight MsgArea guifg=#cdd6f4")
   end,
 }
-
---set zen bg color
-vim.cmd("autocmd VimEnter * hi ZenBg ctermbg=NONE guibg=#1e1e2e")
 EOF
 
 " Remove lag due to match search
 let g:loaded_matchparen = 0
 let g:vimtex_motion_matchparen = 0
 let g:vimtex_matchparen_enabled = 0
+
+highlight iCursor guifg=#000000 guibg=steelblue
