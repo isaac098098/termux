@@ -236,9 +236,12 @@ EOF
 "inoremap <silent> \| <Cmd>call UltiSnips#Anon('\|$1\|','','i','',1)<cr>
 "inoremap <silent> ' <Cmd>call UltiSnips#Anon("'$1'",'','i','',1)<cr>
 
-inoremap iu <Esc>
+inoremap oi <Esc>
+snoremap oi <Esc>
 map j gj
 map k gk
+nmap tt gt
+nmap T gT
 
 " vim-snippets
 
